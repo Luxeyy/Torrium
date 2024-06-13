@@ -7,7 +7,95 @@
    Torrium Devloped and Licensed by Jordanig. 
    Do not Distrubute!                                                                        
 ]]
+local Https = game:GetService("HttpService")
+_G.CurrentVersion = "1.0 BETA TESTING"
+
+local plrs = game:GetService("Players")
+local plr = plrs.LocalPlayer
+
 if writefile() then
     local data = {}
     writefile("TorriumMain.txt", "Torrium is still in the making!")
     end
+
+function SendNotification(Title, Description)
+  local TorriumNotification = Instance.new("ScreenGui")
+local TorriumBackground = Instance.new("Frame")
+local Logo = Instance.new("ImageLabel")
+local UICorner = Instance.new("UICorner")
+local NotificationTitle = Instance.new("TextLabel")
+local NotificationText = Instance.new("TextLabel")
+local Agree = Instance.new("TextButton")
+local UICorner_2 = Instance.new("UICorner")
+TorriumNotification.Name = "TorriumNotification"
+TorriumNotification.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+TorriumNotification.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+TorriumBackground.Name = "TorriumBackground"
+TorriumBackground.Parent = TorriumNotification
+TorriumBackground.BackgroundColor3 = Color3.new(0.152941, 0.152941, 0.152941)
+TorriumBackground.BorderColor3 = Color3.new(0, 0, 0)
+TorriumBackground.BorderSizePixel = 0
+TorriumBackground.Position = UDim2.new(0.321906358, 0, 0.353427887, 0)
+TorriumBackground.Size = UDim2.new(0, 400, 0, 200)
+TorriumBackground.ResetOnSpawn = false
+Logo.Name = "Logo"
+Logo.Parent = TorriumBackground
+Logo.BackgroundColor3 = Color3.new(1, 1, 1)
+Logo.BackgroundTransparency = 1
+Logo.BorderColor3 = Color3.new(0, 0, 0)
+Logo.BorderSizePixel = 0
+Logo.Position = UDim2.new(0.0175000001, 0, 0.0240000002, 0)
+Logo.Size = UDim2.new(0, 50, 0, 50)
+Logo.Image = "rbxassetid://17838579290"
+UICorner.Parent = TorriumBackground
+NotificationTitle.Name = "NotificationTitle"
+NotificationTitle.Parent = TorriumBackground
+NotificationTitle.BackgroundColor3 = Color3.new(1, 1, 1)
+NotificationTitle.BackgroundTransparency = 1
+NotificationTitle.BorderColor3 = Color3.new(0, 0, 0)
+NotificationTitle.BorderSizePixel = 0
+NotificationTitle.Position = UDim2.new(0.25, 0, 0.0549999997, 0)
+NotificationTitle.Size = UDim2.new(0, 200, 0, 25)
+NotificationTitle.Font = Enum.Font.TitilliumWeb
+NotificationTitle.Text = Title
+NotificationTitle.TextColor3 = Color3.new(1, 1, 1)
+NotificationTitle.TextSize = 37
+NotificationText.Name = "NotificationText"
+NotificationText.Parent = TorriumBackground
+NotificationText.BackgroundColor3 = Color3.new(1, 1, 1)
+NotificationText.BackgroundTransparency = 1
+NotificationText.BorderColor3 = Color3.new(0, 0, 0)
+NotificationText.BorderSizePixel = 0
+NotificationText.Position = UDim2.new(0.1875, 0, 0.180000007, 0)
+NotificationText.Size = UDim2.new(0, 250, 0, 102)
+NotificationText.Font = Enum.Font.SourceSans
+NotificationText.Text = Description
+NotificationText.TextColor3 = Color3.new(1, 1, 1)
+NotificationText.TextSize = 20
+Agree.Name = "Agree"
+Agree.Parent = TorriumBackground
+Agree.BackgroundColor3 = Color3.new(0.266667, 0.266667, 0.266667)
+Agree.BorderColor3 = Color3.new(0, 0, 0)
+Agree.BorderSizePixel = 0
+Agree.Position = UDim2.new(0.25, 0, 0.689999998, 0)
+Agree.Size = UDim2.new(0, 200, 0, 40)
+Agree.Font = Enum.Font.SourceSans
+Agree.Text = "Okay"
+Agree.TextColor3 = Color3.new(1, 1, 1)
+Agree.TextSize = 30
+UICorner_2.Parent = Agree
+
+Agree.MouseButton1Down:Connect(function()
+TorriumNotification:Destroy()
+end)
+end
+
+local NewestVersion = return Https:GetAsync("https://raw.githubusercontent.com/Luxeyy/Torrium/main/Version")
+
+if CurrentVersion ~= NewestVersion then
+SendNotification("Error", "Your running a outdated / non-existing verison of Torrium!")
+else
+  SendNotification("yipee", "Your running the newest verison of Torrium!") 
+end
+
+print("heheheheh")
